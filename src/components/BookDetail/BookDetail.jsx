@@ -1,4 +1,5 @@
 import { useLoaderData, useParams } from "react-router-dom";
+import { addToStoredReadList, addToStoredWishList } from "../../utility/addToDb";
 
 const BookDetail = () => {
     const { bookId } = useParams();
@@ -8,6 +9,14 @@ const BookDetail = () => {
     const book = data.find(book => book.bookId == id);
     console.log(book);
     const { image, bookName, author, review, totalPages, rating, category, tags, publisher, yearOfPublishing } = book;
+
+    const markAsRead = (id) => {
+        addToStoredReadList(id)
+    }
+    const addingToWishList = (id) => {
+        addToStoredWishList(id)
+    }
+
     return (
         <div className="hero min-h-screen">
             <div className="hero-content flex-col lg:flex-row gap-12">
@@ -42,8 +51,8 @@ const BookDetail = () => {
                         </ul>
                     </div>
                     <div className="flex gap-8">
-                        <button className="btn text-xl font-bold btn-xl btn-outline">Read</button>
-                        <button className="btn text-xl font-bold btn-xl bg-[#50B1C9] text-white hover:text-black hover:bg-[#5586a2]">Wishlist</button>
+                        <button onClick={() => markAsRead(bookId)} className="btn text-xl font-bold btn-xl btn-outline">Read</button>
+                        <button onClick={() => addingToWishList(bookId)} className="btn text-xl font-bold btn-xl bg-[#50B1C9] text-white hover:btn-outline">Wishlist</button>
                     </div>
                 </div>
             </div>
