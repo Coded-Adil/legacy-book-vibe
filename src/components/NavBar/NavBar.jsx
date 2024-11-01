@@ -2,9 +2,22 @@ import { NavLink } from "react-router-dom";
 
 const NavBar = () => {
     const links = <>
-        <li><NavLink to={'/'}>Home</NavLink></li>
-        <li><a>Listed Books</a></li>
-        <li><a>Item 3</a></li>
+        <li><NavLink className={({ isActive }) =>
+          isActive
+            ? "btn btn-outline font-bold text-xl text-green-300" // Active styles
+            : "text-gray-500 text-xl hover:text-green-300" // Inactive styles
+        } to={'/'}>Home</NavLink></li>
+        <li><NavLink className={({ isActive }) =>
+          isActive
+            ? "btn btn-outline font-bold text-xl text-green-300" // Active styles
+            : "text-gray-500 text-xl hover:text-green-300" // Inactive styles
+        } to={'listedBooks'}>Listed Books</NavLink></li>
+        
+        <li><NavLink className={({ isActive }) =>
+          isActive
+            ? "btn btn-outline font-bold text-xl text-green-300" // Active styles
+            : "text-gray-500 text-xl hover:text-green-300" // Inactive styles
+        } to={'dashboard'}>Pages to Read</NavLink></li>
     </>
     return (
         <div className="navbar bg-base-100">
@@ -30,15 +43,15 @@ const NavBar = () => {
                         {links}
                     </ul>
                 </div>
-                <a className="btn btn-ghost text-xl">Legacy</a>
+                <a className="text-4xl font-bold">Legacy</a>
             </div>
             <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal px-1">
+                <ul className="menu text-xl gap-4 menu-horizontal px-1">
                     {links}
                 </ul>
             </div>
             <div className="navbar-end">
-                <a className="btn">Button</a>
+                <a className="btn bg-green-500 text-white text-xl">Join</a>
             </div>
         </div>
     );
