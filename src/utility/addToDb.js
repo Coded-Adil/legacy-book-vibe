@@ -4,7 +4,7 @@ const getStoredReadList = () => {
         const storedList = JSON.parse(storedListStr);
         return storedList;
     }
-    else{
+    else {
         return [];
     }
 }
@@ -14,37 +14,37 @@ const getStoredInWishList = () => {
         const storedList = JSON.parse(storedListStr);
         return storedList;
     }
-    else{
+    else {
         return [];
     }
 }
 
 const addToStoredWishList = (id) => {
     const storedList = getStoredInWishList();
-    if(storedList.includes(id))
-    {
+    if (storedList.includes(id)) {
         alert(id, ' already exist');
     }
-    else{
+    else {
         storedList.push(id);
         const storedListStr = JSON.stringify(storedList);
-        localStorage.setItem('wish-list', storedListStr);
+        localStorage.setItem('wish-list', storedListStr); 
+        toast("This Book is added to Wish List");
     }
 }
 const addToStoredReadList = (id) => {
     const storedList = getStoredReadList();
-    if(storedList.includes(id))
-    {
+    if (storedList.includes(id)) {
         alert(id, ' already exist');
     }
-    else{
+    else {
         storedList.push(id);
         const storedListStr = JSON.stringify(storedList);
         localStorage.setItem('read-list', storedListStr);
+        toast("This Book is added to Read List");
     }
 }
 
-export {addToStoredReadList}
-export {addToStoredWishList}
-export {getStoredReadList}
-export {getStoredInWishList}
+export { addToStoredReadList }
+export { addToStoredWishList }
+export { getStoredReadList }
+export { getStoredInWishList }
